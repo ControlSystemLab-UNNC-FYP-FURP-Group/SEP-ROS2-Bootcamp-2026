@@ -1,23 +1,31 @@
-# ROS 2 Carter Bootcamp
+# 🤖 ROS 2 Carter Bootcamp
 
 > An 8-week hands-on ROS 2 summer bootcamp for sophomore and junior engineering/science students.  
 > Students will start from basic Linux and ROS 2 usage and gradually build a complete mobile robot navigation stack on our Carter differential-drive robot platform.
 
 ---
 
-## Quick Links
+## 🔗 Quick Links
 
 - [Course Outline - English](docs/course_outline_en.md)
 - [课程大纲 - 中文](docs/course_outline_zh.md)
+- [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
 
 ---
 
-## Project Goal
+## 🏫 Organizer / Lab
+
+This bootcamp is organized by the [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/).
+
+---
+
+## 🎯 Project Goal
 
 This repository is the public course hub for the **ROS 2 Carter Bootcamp**. It is designed to help students, teaching assistants, and instructors share:
 
 - course announcements;
 - weekly learning objectives;
+- lecture slides, which will be updated before each Monday lecture;
 - lecture notes and lab instructions;
 - Carter robot bringup resources;
 - debugging checklists;
@@ -29,7 +37,7 @@ The bootcamp is not intended to be a purely theoretical ROS 2 lecture series. Th
 
 ---
 
-## Target Students
+## 👥 Target Students
 
 This course is designed for undergraduate students with engineering or science backgrounds, especially sophomore and junior students who may have:
 
@@ -42,7 +50,7 @@ No prior ROS 2 experience is required.
 
 ---
 
-## Practical Learning Objectives
+## 🧭 Practical Learning Objectives
 
 By the end of the bootcamp, each student team should be able to:
 
@@ -61,7 +69,7 @@ By the end of the bootcamp, each student team should be able to:
 
 ---
 
-## Available Course Resources
+## 📦 Available Course Resources
 
 This repository may include or link to:
 
@@ -95,7 +103,7 @@ ros2-carter-bootcamp/
 
 ---
 
-## Course Timeline
+## 🗓️ Course Timeline
 
 The course consists of one preparation period and eight formal teaching weeks.
 
@@ -107,7 +115,7 @@ The course consists of one preparation period and eight formal teaching weeks.
 
 ---
 
-## Weekly Teaching Rhythm
+## 🔁 Weekly Teaching Rhythm
 
 Each week follows a fixed rhythm.
 
@@ -117,7 +125,10 @@ Each week follows a fixed rhythm.
 | Wednesday afternoon | Clinic | Diagnose engineering problems and unblock teams |
 | Friday afternoon | Q&A + checkpoint | Review common issues and verify weekly progress |
 
-### Monday: Lecture + Guided Lab
+
+> 📌 **Slides update policy:** weekly slides will be updated before the Monday lecture of that week.
+
+### 🧑‍🏫 Monday: Lecture + Guided Lab
 
 Typical structure:
 
@@ -129,7 +140,7 @@ Typical structure:
 02:40 - 03:00  Weekly task briefing
 ```
 
-### Wednesday: Engineering Clinic
+### 🩺 Wednesday: Engineering Clinic
 
 The clinic is for technical diagnosis rather than general discussion. Students should bring concrete evidence:
 
@@ -144,7 +155,7 @@ The clinic is for technical diagnosis rather than general discussion. Students s
 8. What they already tried
 ```
 
-### Friday: Q&A + Checkpoint
+### ✅ Friday: Q&A + Checkpoint
 
 Friday is used to verify whether each team is ready to move on to the next stage.
 
@@ -159,7 +170,7 @@ Each team should be able to answer:
 
 ---
 
-## Week 0 Preparation
+## 🚀 Week 0 Preparation
 
 Week 0 runs from now until **2026-06-08**.
 
@@ -188,7 +199,7 @@ Recommended references:
 
 ---
 
-## How to Ask Questions
+## 🙋 How to Ask Questions
 
 Good engineering questions include reproducible evidence.
 
@@ -229,17 +240,17 @@ Paste the error message here.
 
 ---
 
-## Carter Robot Interface Convention
+## 🛠️ Carter Robot Interface Convention
 
 The Carter platform used in this course is assumed to follow the interface below.
 
-### Input
+### 📥 Input
 
 ```text
 /cmd_vel    geometry_msgs/msg/Twist
 ```
 
-### Core Outputs
+### 📤 Core Outputs
 
 ```text
 /odom              nav_msgs/msg/Odometry
@@ -249,7 +260,7 @@ The Carter platform used in this course is assumed to follow the interface below
 /imu               sensor_msgs/msg/Imu
 ```
 
-### Optional Outputs
+### ➕ Optional Outputs
 
 ```text
 /battery_state     sensor_msgs/msg/BatteryState
@@ -257,7 +268,7 @@ The Carter platform used in this course is assumed to follow the interface below
 /fix               sensor_msgs/msg/NavSatFix
 ```
 
-### Recommended TF Tree
+### 🧩 Recommended TF Tree
 
 ```text
 map
@@ -273,7 +284,7 @@ map
 
 ---
 
-## Safety Rules
+## ⚠️ Safety Rules
 
 Carter is a real mobile robot. All hardware labs must follow these rules:
 
@@ -289,22 +300,26 @@ Carter is a real mobile robot. All hardware labs must follow these rules:
 
 ---
 
-## Main Technical References
+## 📚 Main Technical References
 
-### ROS 2
+### 🏫 Lab
+
+- [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
+
+### 🤖 ROS 2
 
 - [ROS 2 Humble Documentation](https://docs.ros.org/en/humble/index.html)
 - [ROS 2 Humble Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
 - [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
 - [ROS Index](https://index.ros.org/)
 
-### Modeling, TF, and Visualization
+### 🧱 Modeling, TF, and Visualization
 
 - [URDF Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html)
 - [tf2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Main.html)
 - [RViz User Guide](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html)
 
-### Control, SLAM, Localization, and Navigation
+### 🧭 Control, SLAM, Localization, and Navigation
 
 - [ros2_control](https://control.ros.org/)
 - [diff_drive_controller](https://control.ros.org/master/doc/ros2_controllers/diff_drive_controller/doc/userdoc.html)
@@ -316,7 +331,7 @@ Carter is a real mobile robot. All hardware labs must follow these rules:
 
 ---
 
-## License
+## 📄 License
 
 Course materials in this repository are for educational use.  
 Please follow the licenses of all third-party software, documents, and referenced resources.

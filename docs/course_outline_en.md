@@ -1,12 +1,13 @@
-# Course Outline - ROS 2 Carter Bootcamp
+# 📘 Course Outline - ROS 2 Carter Bootcamp
 
 > Language: English  
 > Duration: Week 0 preparation + 8 formal teaching weeks  
-> Platform: Linux2Go, Ubuntu 22.04, ROS 2 Humble, Carter differential-drive robot
+> Platform: Linux2Go, Ubuntu 22.04, ROS 2 Humble, Carter differential-drive robot  
+> Organizer: [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
 
 ---
 
-## 1. Course Positioning
+## 1. 🎯 Course Positioning
 
 This bootcamp is designed as a practical robotics systems course. The goal is not only to teach ROS 2 commands, but also to help students understand how a real mobile robot system is built, debugged, integrated, and evaluated.
 
@@ -34,7 +35,7 @@ Final integrated robot demo
 
 ---
 
-## 2. Expected Background
+## 2. 👥 Expected Background
 
 Students are expected to have:
 
@@ -47,7 +48,7 @@ No prior ROS 2 experience is required.
 
 ---
 
-## 3. Final Learning Outcomes
+## 3. 🧭 Final Learning Outcomes
 
 By the end of the course, students should be able to:
 
@@ -69,7 +70,7 @@ By the end of the course, students should be able to:
 
 ---
 
-## 4. Course Rhythm
+## 4. 🔁 Course Rhythm
 
 Each formal week uses the same structure.
 
@@ -79,21 +80,23 @@ Each formal week uses the same structure.
 | Wednesday afternoon | Clinic | Diagnose issues and unblock teams |
 | Friday afternoon | Q&A + checkpoint | Verify progress and prepare for next week |
 
+> 📌 **Slides update policy:** Weekly slides will be updated before the Monday lecture of that week.
+
 The course emphasizes weekly checkpoints because mobile robot systems are cumulative. If the base driver, odometry, or TF tree is broken, later SLAM and navigation labs will also fail.
 
 ---
 
-## 5. Week 0 - Preparation Before Linux2Go Distribution
+## 5. 🚀 Week 0 - Preparation Before Linux2Go Distribution
 
-### Time
+### ⏱️ Time
 
 From now to **2026-06-08**.
 
-### Main Goal
+### 🎯 Main Goal
 
 Students should get familiar with Ubuntu, VMware, Linux terminal tools, and ROS 2 Humble before receiving the official Linux2Go system.
 
-### Tasks
+### ✅ Tasks
 
 - Install VMware Workstation Pro, VMware Fusion, or another supported virtualization tool.
 - Create an Ubuntu 22.04 virtual machine.
@@ -102,7 +105,7 @@ Students should get familiar with Ubuntu, VMware, Linux terminal tools, and ROS 
 - Run basic ROS 2 demo nodes.
 - Read beginner ROS 2 tutorials.
 
-### Suggested Linux Commands
+### 💻 Suggested Linux Commands
 
 ```bash
 pwd
@@ -123,7 +126,7 @@ apt update
 apt install
 ```
 
-### Suggested ROS 2 Tests
+### 🤖 Suggested ROS 2 Tests
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -133,7 +136,7 @@ ros2 run demo_nodes_cpp talker
 ros2 run demo_nodes_py listener
 ```
 
-### Checkpoint
+### ✅ Checkpoint
 
 Before Week 1, students should understand:
 
@@ -145,7 +148,7 @@ Before Week 1, students should understand:
 - what nodes and topics roughly mean;
 - how to copy logs and ask a reproducible technical question.
 
-### References
+### 📚 References
 
 - [Ubuntu Desktop Download](https://ubuntu.com/download/desktop)
 - [Ubuntu 22.04 Releases](https://releases.ubuntu.com/22.04/)
@@ -154,13 +157,13 @@ Before Week 1, students should understand:
 
 ---
 
-## 6. Week 1 - ROS 2 Basics and Tooling
+## 6. 🤖 Week 1 - ROS 2 Basics and Tooling
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will learn the fundamental ROS 2 computing model and development workflow.
 
-### Topics
+### 📌 Topics
 
 - ROS 2 workspace and package structure;
 - nodes and topics;
@@ -173,7 +176,7 @@ Students will learn the fundamental ROS 2 computing model and development workfl
 - `rosbag2`;
 - basic package creation and build process.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - What ROS 2 is and why robotics systems use middleware.
 - How nodes communicate.
@@ -181,7 +184,7 @@ Students will learn the fundamental ROS 2 computing model and development workfl
 - How to build with `colcon`.
 - How to write a simple publisher and subscriber.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Diagnostic checklist:
 
@@ -194,7 +197,7 @@ Diagnostic checklist:
 6. Students can inspect topics with ros2 topic list and ros2 topic echo.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each student submits:
 
@@ -206,14 +209,14 @@ Each student submits:
 5. A README explaining how to run the code
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - `week1_ros2_basics` package;
 - commands used during testing;
 - screenshots or terminal logs;
 - short reflection on one debugging problem.
 
-### References
+### 📚 References
 
 - [ROS 2 Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
 - [Understanding nodes](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html)
@@ -222,13 +225,13 @@ Each student submits:
 
 ---
 
-## 7. Week 2 - Carter Modeling, URDF, TF, and Differential Drive Kinematics
+## 7. 🧱 Week 2 - Carter Modeling, URDF, TF, and Differential Drive Kinematics
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will understand the physical and coordinate-frame representation of Carter.
 
-### Topics
+### 📌 Topics
 
 - Differential-drive kinematics;
 - `/cmd_vel` interpretation;
@@ -240,14 +243,14 @@ Students will understand the physical and coordinate-frame representation of Car
 - static and dynamic TF;
 - RViz2 robot model visualization.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - How a differential-drive robot moves.
 - How robot geometry becomes a URDF model.
 - Why TF is critical for SLAM and navigation.
 - Recommended Carter frame tree.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Diagnostic checklist:
 
@@ -259,7 +262,7 @@ Diagnostic checklist:
 5. Frame names are consistent.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team submits:
 
@@ -271,7 +274,7 @@ Each team submits:
 5. One-page explanation of differential-drive kinematics
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - `carter_description`;
 - `urdf/carter.urdf.xacro`;
@@ -279,7 +282,7 @@ Each team submits:
 - TF tree image;
 - model inspection notes.
 
-### References
+### 📚 References
 
 - [URDF Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html)
 - [Using Xacro](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html)
@@ -288,13 +291,13 @@ Each team submits:
 
 ---
 
-## 8. Week 3 - Carter Base Driver and ros2_control
+## 8. 🛠️ Week 3 - Carter Base Driver and ros2_control
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will connect high-level velocity commands to real base motion.
 
-### Topics
+### 📌 Topics
 
 - `/cmd_vel` to wheel velocity conversion;
 - encoder ticks to wheel speed;
@@ -305,14 +308,14 @@ Students will connect high-level velocity commands to real base motion.
 - velocity and acceleration limits;
 - emergency stop and manual takeover.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - Carter base hardware interface.
 - Differential-drive control pipeline.
 - Odometry computation from encoders.
 - Why safety checks are part of the software architecture.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Hardware diagnostic checklist:
 
@@ -326,7 +329,7 @@ Hardware diagnostic checklist:
 7. Emergency stop works.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team demonstrates:
 
@@ -339,14 +342,14 @@ Each team demonstrates:
 6. Base parameter table
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - Carter bringup launch file;
 - base driver configuration;
 - wheel radius, wheel separation, encoder resolution table;
 - short test report.
 
-### References
+### 📚 References
 
 - [ros2_control Documentation](https://control.ros.org/)
 - [diff_drive_controller](https://control.ros.org/master/doc/ros2_controllers/diff_drive_controller/doc/userdoc.html)
@@ -354,13 +357,13 @@ Each team demonstrates:
 
 ---
 
-## 9. Week 4 - LiDAR, IMU, rosbag, and State Estimation
+## 9. 📡 Week 4 - LiDAR, IMU, rosbag, and State Estimation
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will validate robot sensors and fuse odometry with IMU data.
 
-### Topics
+### 📌 Topics
 
 - `sensor_msgs/LaserScan`;
 - `sensor_msgs/Imu`;
@@ -371,14 +374,14 @@ Students will validate robot sensors and fuse odometry with IMU data.
 - `robot_localization`;
 - raw odometry versus filtered odometry.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - What LiDAR and IMU data look like in ROS 2.
 - Common sensor-frame mistakes.
 - How to record reproducible experiments.
 - How EKF-based state estimation helps navigation.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Diagnostic checklist:
 
@@ -391,7 +394,7 @@ Diagnostic checklist:
 6. rosbag playback reproduces the issue.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team submits:
 
@@ -403,14 +406,14 @@ Each team submits:
 5. One sensor debugging record
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - `carter_sensors` launch file;
 - `carter_localization` configuration;
 - rosbag file or link;
 - plots or screenshots comparing odometry outputs.
 
-### References
+### 📚 References
 
 - [sensor_msgs Package](https://docs.ros.org/en/humble/p/sensor_msgs/)
 - [robot_localization Documentation](https://docs.ros.org/en/melodic/api/robot_localization/html/index.html)
@@ -419,13 +422,13 @@ Each team submits:
 
 ---
 
-## 10. Week 5 - Indoor SLAM Mapping
+## 10. 🗺️ Week 5 - Indoor SLAM Mapping
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will create a usable indoor 2D map with the Carter robot.
 
-### Topics
+### 📌 Topics
 
 - 2D LiDAR SLAM;
 - scan matching;
@@ -436,14 +439,14 @@ Students will create a usable indoor 2D map with the Carter robot.
 - map quality evaluation;
 - good mapping route design.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - Why SLAM needs odometry, LiDAR, and TF.
 - How to collect a good mapping run.
 - How to identify map distortion and duplicated walls.
 - How to save and reuse maps.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Mapping diagnostic checklist:
 
@@ -456,7 +459,7 @@ Mapping diagnostic checklist:
 6. Dynamic obstacle interference is understood.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team submits:
 
@@ -468,14 +471,14 @@ Each team submits:
 5. One failed mapping case explanation
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - indoor map files;
 - SLAM launch file;
 - mapping test notes;
 - one failure analysis.
 
-### References
+### 📚 References
 
 - [SLAM Toolbox GitHub](https://github.com/SteveMacenski/slam_toolbox)
 - [SLAM Toolbox on ROS Index](https://index.ros.org/r/slam_toolbox/)
@@ -483,13 +486,13 @@ Each team submits:
 
 ---
 
-## 11. Week 6 - Indoor Navigation and Obstacle Avoidance with Nav2
+## 11. 🧭 Week 6 - Indoor Navigation and Obstacle Avoidance with Nav2
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will configure Nav2 for indoor navigation.
 
-### Topics
+### 📌 Topics
 
 - Nav2 architecture;
 - map server;
@@ -503,14 +506,14 @@ Students will configure Nav2 for indoor navigation.
 - recovery behaviors;
 - RViz2 goal setting.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - How Nav2 turns a goal pose into robot motion.
 - How global planning and local control differ.
 - Why costmap tuning matters.
 - How to debug navigation failures.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Nav2 diagnostic checklist:
 
@@ -523,7 +526,7 @@ Nav2 diagnostic checklist:
 6. Recovery behavior is understood.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team demonstrates:
 
@@ -535,14 +538,14 @@ Each team demonstrates:
 5. Explanation of carter_nav2_params.yaml
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - `carter_navigation.launch.py`;
 - `carter_nav2_params.yaml`;
 - navigation demo video;
 - tuning notes.
 
-### References
+### 📚 References
 
 - [Nav2 Documentation](https://docs.nav2.org/)
 - [Nav2 Setup Guides](https://docs.nav2.org/setup_guides/index.html)
@@ -551,13 +554,13 @@ Each team demonstrates:
 
 ---
 
-## 12. Week 7 - Outdoor Waypoint Navigation and GPS / RTK Extension
+## 12. 🌤️ Week 7 - Outdoor Waypoint Navigation and GPS / RTK Extension
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will understand the difference between indoor navigation and outdoor waypoint navigation.
 
-### Topics
+### 📌 Topics
 
 - Outdoor navigation challenges;
 - GPS and RTK basics;
@@ -568,14 +571,14 @@ Students will understand the difference between indoor navigation and outdoor wa
 - outdoor safety;
 - manual takeover.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - Why GPS is not a direct replacement for indoor localization.
 - How IMU, wheel odometry, and GPS can be fused.
 - How to define and test outdoor waypoints.
 - How to design a safe outdoor experiment.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Outdoor diagnostic checklist:
 
@@ -588,7 +591,7 @@ Outdoor diagnostic checklist:
 6. Human takeover is available.
 ```
 
-### Friday Checkpoint
+### ✅ Friday Checkpoint
 
 Each team demonstrates or submits:
 
@@ -607,7 +610,7 @@ If GPS / RTK is unreliable, the task can be downgraded to:
 3. Offline GPS / EKF analysis
 ```
 
-### Deliverables
+### 📦 Deliverables
 
 - outdoor waypoint file;
 - GPS / EKF configuration;
@@ -615,7 +618,7 @@ If GPS / RTK is unreliable, the task can be downgraded to:
 - rosbag or log file;
 - short outdoor experiment report.
 
-### References
+### 📚 References
 
 - [Nav2 GPS Waypoint Following Tutorial](https://docs.nav2.org/tutorials/docs/navigation2_with_gps.html)
 - [robot_localization Documentation](https://docs.ros.org/en/melodic/api/robot_localization/html/index.html)
@@ -623,13 +626,13 @@ If GPS / RTK is unreliable, the task can be downgraded to:
 
 ---
 
-## 13. Week 8 - Capstone Integration and Final Demo
+## 13. 🏁 Week 8 - Capstone Integration and Final Demo
 
-### Learning Objectives
+### 🎯 Learning Objectives
 
 Students will integrate the full Carter mobile robot navigation system.
 
-### Topics
+### 📌 Topics
 
 - system integration;
 - launch file organization;
@@ -639,14 +642,14 @@ Students will integrate the full Carter mobile robot navigation system.
 - engineering report writing;
 - failure analysis and future work.
 
-### Monday Lecture
+### 🧑‍🏫 Monday Lecture
 
 - How to structure the final system.
 - How to write reproducible run instructions.
 - How to explain architecture and tradeoffs.
 - How to prepare for a robot demo.
 
-### Wednesday Clinic
+### 🩺 Wednesday Clinic
 
 Final diagnostic checklist:
 
@@ -660,7 +663,7 @@ Final diagnostic checklist:
 7. Demo route is safe.
 ```
 
-### Friday Final Demo
+### 🏁 Friday Final Demo
 
 Each team presents for 10-15 minutes:
 
@@ -673,7 +676,7 @@ Each team presents for 10-15 minutes:
 6. Failure cases and improvement plan
 ```
 
-### Final Deliverables
+### 📦 Final Deliverables
 
 - Git repository;
 - launch files;
@@ -687,7 +690,7 @@ Each team presents for 10-15 minutes:
 
 ---
 
-## 14. Suggested Grading
+## 14. 🧮 Suggested Grading
 
 | Component | Weight |
 |---|---:|
@@ -699,7 +702,7 @@ Each team presents for 10-15 minutes:
 
 ---
 
-## 15. Engineering Mindset
+## 15. 🧠 Engineering Mindset
 
 The course values evidence-based debugging. A good answer is not only “it works,” but:
 
