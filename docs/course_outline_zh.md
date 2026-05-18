@@ -1,111 +1,133 @@
-# 📘 课程大纲 - ROS 2 Carter Bootcamp
+# 📗 ROS 2 Carter Bootcamp — 课程大纲
 
-> 语言：中文  
-> 周期：Week 0 预备期 + 8 周正式课程  
-> 平台：Linux2Go、Ubuntu 22.04、ROS 2 Humble、Carter 差速底盘  
-> 组织实验室：[Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
+<p align="center">
+  <img src="../assets/course_map.svg" alt="课程学习路径" width="100%">
+</p>
+
+> **语言：** 中文  
+> **周期：** Week 0 预备期 + 8 周正式课程  
+> **平台：** Linux2Go · Ubuntu 22.04 · ROS 2 Humble · Carter 差速底盘  
+> **组织实验室：** [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)  
+> **Slides：** 每周一上课前更新到 `slides/`  
+> **提问指南：** [How to Ask Questions / 如何高效提问](asking_questions.md)
 
 ---
 
-## 1. 🎯 课程定位
+## 1. 🌟 课程定位
 
-本课程是一门偏工程实践的移动机器人系统课程。课程目标不是只教 ROS 2 命令，而是帮助学生理解一个真实移动机器人系统如何被搭建、调试、集成和评估。
+这是一门偏工程实践的移动机器人系统课程。
 
-课程采用逐步递进路线：
+它不是单纯的 ROS 2 命令课，而是一条从零开始的真实机器人系统路线：
 
 ```text
-Linux 与 ROS 2 基础
-  ↓
-ROS 2 package、node、topic、service、action、launch、rosbag
-  ↓
-URDF / Xacro 建模与 TF 坐标树
-  ↓
-Carter 差速底盘 bringup
-  ↓
-LiDAR、IMU、里程计与状态估计
-  ↓
-室内 SLAM 建图
-  ↓
-Nav2 室内导航与避障
-  ↓
-GPS / RTK 条件下的室外 waypoint 导航
-  ↓
-最终系统集成演示
+“我怎么打开终端？”
+        ↓
+“ROS 2 node 之间怎么通信？”
+        ↓
+“机器人为什么认为自己在这里？”
+        ↓
+“为什么 Nav2 不愿意动？”
+        ↓
+“我如何证明我的机器人真的工作过？”
 ```
+
+课程最终目标是让每个学生小组能够基于 Carter 差速底盘，搭建、调试、解释一个可以工作的移动机器人导航系统。
 
 ---
 
-## 2. 👥 学生背景要求
+## 2. 🎯 最终实践目标
 
-本课程适合具有工科或理科背景的大二、大三学生。建议学生具备：
+到 Week 8 结束时，每个小组应能够演示 Carter 完成：
+
+- 通过 `/cmd_vel` 接收速度指令；
+- 作为差速移动机器人稳定运动；
+- 发布 `/odom`、`/tf`、`/joint_states`、`/scan`、`/imu`；
+- 使用轮速里程计和 IMU 做状态估计；
+- 构建室内 2D 地图；
+- 在地图中完成定位；
+- 使用 Nav2 完成一个或多个室内目标点导航；
+- 避开简单静态和动态障碍；
+- 在 GPS / RTK 条件允许时完成基础室外 waypoint 导航；
+- 用命令、截图、地图、参数、日志和 rosbag 记录并解释实验结果。
+
+---
+
+## 3. 👥 适合学生
+
+本课程面向具有工科或理科背景的大二、大三本科生。
+
+建议基础：
 
 - 基础 Python 或 C++ 编程能力；
-- 基础数学和物理背景；
+- 基础数学与物理知识；
 - 愿意使用 Linux 终端；
-- 愿意在小组中调试软硬件系统。
+- 愿意在小组中调试软件和硬件；
+- 对机器人、控制、自动驾驶、AI 系统或机电系统感兴趣。
 
 课程不要求学生提前掌握 ROS 2。
 
 ---
 
-## 3. 🧭 最终学习目标
-
-课程结束后，学生应该能够：
-
-1. 解释 ROS 2 在移动机器人系统中的作用；
-2. 创建、构建和运行 ROS 2 package；
-3. 使用 `ros2` 命令行工具检查 node、topic、service、action、parameter 和 bag；
-4. 使用 URDF / Xacro 建模差速机器人；
-5. 调试 TF tree，并解释 `map`、`odom`、`base_link`、`laser_link`、`imu_link` 的关系；
-6. 使用 `/cmd_vel` 控制 Carter 底盘；
-7. 将轮速编码器数据转换为里程计；
-8. 接入并验证 LiDAR 和 IMU 数据；
-9. 使用 `robot_localization` 融合轮速里程计与 IMU；
-10. 使用 SLAM Toolbox 完成室内建图；
-11. 配置 Nav2 完成室内定位和导航；
-12. 调整基础 costmap、planner 和 controller 参数；
-13. 完成低速室外 waypoint 导航；
-14. 使用日志、截图、地图、rosbag 和参数文件记录实验；
-15. 提交包含系统设计、测试结果、失败案例和改进方向的工程报告。
-
----
-
-## 4. 🔁 每周课程节奏
+## 4. 🔁 每周节奏
 
 正式课程每周采用固定节奏。
 
-| 时间 | 内容 | 目的 |
-|---|---|---|
-| 周一下午 | 主课 + guided lab | 引入本周知识点，启动本周实验 |
-| 周三下午 | clinic 工程问诊 | 集中诊断问题，帮助各组 unblock |
-| 周五下午 | 答疑 + checkpoint 验收 | 检查进度，判断是否可以进入下一阶段 |
+| 时间 | 环节 | 主要目的 | 学生产出 |
+|---|---|---|---|
+| 周一下午 | 🎙️ 主课 + guided lab | 学习新概念，启动本周任务 | 跑通 starter demo，理解本周目标 |
+| 周三下午 | 🩺 Clinic 工程问诊 | 集中诊断问题，帮助各组 unblock | 带日志、截图、TF tree、topic list、rosbag |
+| 周五下午 | ✅ 答疑 + checkpoint | 检查进度，复盘失败 | 演示、提交证据、解释失败原因 |
 
-> 📌 **Slides 更新说明：** 每周 slides 会在当周周一上课前更新。
-
-移动机器人系统具有很强的累积性。如果底盘驱动、里程计或 TF 坐标树有问题，后续 SLAM 和导航都会受到影响。因此本课程强调每周 checkpoint。
+> 📌 每周 slides 会在当周周一上课前更新。
 
 ---
 
-## 5. 🚀 Week 0 - Linux2Go 发放前预备期
+## 5. 🧭 学习路线
 
-### ⏱️ 时间
+```mermaid
+flowchart LR
+    A[Week 0<br/>Linux + ROS 2 Humble] --> B[Week 1<br/>ROS 2 基础]
+    B --> C[Week 2<br/>URDF + TF]
+    C --> D[Week 3<br/>Carter Bringup]
+    D --> E[Week 4<br/>传感器 + EKF]
+    E --> F[Week 5<br/>室内 SLAM]
+    F --> G[Week 6<br/>Nav2 导航]
+    G --> H[Week 7<br/>室外 Waypoint]
+    H --> I[Week 8<br/>Capstone 演示]
+```
 
-从现在到 **2026-06-08**。
+---
 
-### 🎯 主要目标
+## 6. 🧰 Week 0 — Linux2Go 发放前预备期
 
-学生在拿到正式 Linux2Go 系统前，先熟悉 Ubuntu、VMware、Linux 终端和 ROS 2 Humble。
+### 时间
 
-### ✅ 任务
+**现在 → 2026-06-08**
 
-- 安装 VMware Workstation Pro、VMware Fusion 或其他可用虚拟机软件；
-- 创建 Ubuntu 22.04 虚拟机；
-- 练习基础 Linux 命令；
-- 尝试安装 ROS 2 Humble；
+正式 Linux2Go 教学系统将在 **2026-06-08** 发放。在此之前，建议同学们慢慢熟悉 VMware、Ubuntu、Linux 终端和 ROS 2 Humble。
+
+### 目标
+
+学生应逐步熟悉：
+
+- 虚拟机；
+- Ubuntu 22.04；
+- 基础 Linux 命令；
+- 使用 `apt` 安装软件；
+- ROS 2 Humble 安装；
 - 运行基础 ROS 2 demo；
+- 复制日志并提出可复现的技术问题。
+
+### 建议任务
+
+- 安装 VMware Workstation、VMware Fusion 或其他虚拟机软件；
+- 创建 Ubuntu 22.04 虚拟机；
+- 练习终端命令；
+- 尝试安装 ROS 2 Humble；
+- 运行 `talker` 和 `listener` 示例；
 - 阅读 ROS 2 beginner tutorials。
 
-### 💻 建议掌握的 Linux 命令
+### 常用 Linux 命令
 
 ```bash
 pwd
@@ -121,12 +143,11 @@ less
 grep
 find
 chmod
-sudo
-apt update
-apt install
+sudo apt update
+sudo apt install
 ```
 
-### 🤖 建议运行的 ROS 2 测试
+### ROS 2 测试命令
 
 ```bash
 source /opt/ros/humble/setup.bash
@@ -136,36 +157,34 @@ ros2 run demo_nodes_cpp talker
 ros2 run demo_nodes_py listener
 ```
 
-### ✅ Checkpoint
-
-Week 1 开始前，学生应至少了解：
-
-- 什么是虚拟机；
-- Ubuntu 是什么；
-- 如何打开并使用 terminal；
-- 如何通过 `apt` 安装软件；
-- ROS 2 Humble 是什么；
-- node 和 topic 的基本含义；
-- 如何复制日志并提出可复现的技术问题。
-
-### 📚 参考资料
+### 参考资料
 
 - [Ubuntu Desktop Download](https://ubuntu.com/download/desktop)
 - [Ubuntu 22.04 Releases](https://releases.ubuntu.com/22.04/)
 - [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
 - [ROS 2 Humble Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
 
+### Checkpoint
+
+Week 1 前，学生应至少能够说明：
+
+- 什么是虚拟机；
+- Ubuntu 是什么；
+- 如何打开并使用 terminal；
+- ROS 2 Humble 是什么；
+- node 和 topic 大概是什么意思；
+- 如何把终端日志复制到 GitHub Issue 或 clinic 记录里。
+
 ---
 
-## 6. 🤖 Week 1 - ROS 2 基础与工具链
+## 7. 🤖 Week 1 — ROS 2 基础与工具链
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将学习 ROS 2 的基础计算模型和开发流程。
+主题：
 
-### 📌 主题
-
-- ROS 2 workspace 和 package 结构；
+- ROS 2 计算图；
+- workspace 与 package 结构；
 - node 与 topic；
 - message；
 - service 与 action；
@@ -176,323 +195,273 @@ Week 1 开始前，学生应至少了解：
 - `rosbag2`；
 - package 创建与构建流程。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- ROS 2 是什么，为什么机器人系统需要中间件；
-- node 如何通信；
-- 如何创建 workspace；
-- 如何使用 `colcon` 构建；
-- 如何编写简单 publisher 和 subscriber。
+- 创建 ROS 2 workspace；
+- 创建 Python package；
+- 编写 publisher；
+- 编写 subscriber；
+- 使用 launch 启动多个 node；
+- 记录并回放 rosbag。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-检查重点：
+重点：
 
-```text
-1. Linux2Go 是否可以正常启动
-2. ROS 2 Humble 是否可用
-3. colcon build 是否成功
-4. 是否知道如何 source setup.bash
-5. talker / listener demo 是否可运行
-6. 是否能用 ros2 topic list 和 ros2 topic echo 检查 topic
+- Linux2Go / 环境问题；
+- `colcon build` 失败；
+- `source install/setup.bash` 问题；
+- package 找不到；
+- ROS 2 命令使用。
+
+建议携带信息：
+
+```bash
+echo $ROS_DISTRO
+echo $AMENT_PREFIX_PATH
+colcon build --symlink-install
+ros2 node list
+ros2 topic list
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
-每位同学提交：
+提交：
 
-```text
-1. 一个 publisher
-2. 一个 subscriber
-3. 一个 launch 文件
-4. 一段短 rosbag
-5. 一个说明如何运行代码的 README
-```
-
-### 📦 交付物
-
-- `week1_ros2_basics` package；
-- 测试命令；
-- 截图或终端日志；
-- 一段调试问题复盘。
-
-### 📚 参考资料
-
-- [ROS 2 Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
-- [Understanding nodes](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Nodes/Understanding-ROS2-Nodes.html)
-- [Understanding topics](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Topics/Understanding-ROS2-Topics.html)
-- [Using colcon to build packages](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html)
+- 一个 publisher node；
+- 一个 subscriber node；
+- 一个 launch 文件；
+- 一段短 rosbag；
+- `rqt_graph` 截图；
+- 简短说明 node、topic、service、action 的区别。
 
 ---
 
-## 7. 🧱 Week 2 - Carter 建模、URDF、TF 与差速运动学
+## 8. 🧱 Week 2 — Carter 建模、URDF、Xacro 与 TF
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将理解 Carter 的物理结构和坐标系表示方法。
-
-### 📌 主题
+主题：
 
 - 差速底盘运动学；
-- `/cmd_vel` 含义；
-- `linear.x` 与 `angular.z`；
-- URDF 和 Xacro；
-- link 与 joint；
-- visual、collision、inertial；
+- `/cmd_vel` 的含义；
+- robot link 与 joint；
+- URDF 与 Xacro；
 - `robot_state_publisher`；
 - 静态 TF 与动态 TF；
-- RViz2 机器人模型可视化。
+- TF tree 设计；
+- 常见坐标系：`map`、`odom`、`base_footprint`、`base_link`、`laser_link`、`imu_link`。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- 差速机器人如何运动；
-- 如何将机器人几何结构表示为 URDF；
-- 为什么 TF 对 SLAM 和导航至关重要；
-- Carter 推荐坐标树。
+- 创建 `carter_description`；
+- 编写简化 Carter URDF / Xacro；
+- 在 RViz 中显示模型；
+- 生成 TF tree。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-检查重点：
+重点：
 
-```text
-1. Carter 模型是否能在 RViz2 中显示
-2. 轮子 link 位置是否正确
-3. laser_link 和 imu_link 是否挂在正确父坐标系下
-4. TF tree 是否有断裂
-5. frame 命名是否一致
+- link 缺失；
+- 轮子位置不对；
+- TF tree 断裂；
+- 传感器 frame 错误；
+- RViz 显示错误。
+
+建议携带信息：
+
+```bash
+ros2 run tf2_tools view_frames
+ros2 run tf2_ros tf2_echo base_link laser_link
+ros2 topic echo /joint_states --once
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
-每组提交：
+提交：
 
-```text
-1. carter_description package
-2. display.launch.py
-3. RViz2 截图
-4. TF tree 截图
-5. 一页差速底盘运动学说明
-```
-
-### 📦 交付物
-
-- `carter_description`；
-- `urdf/carter.urdf.xacro`；
-- `launch/display.launch.py`；
-- TF tree 图片；
-- 模型检查记录。
-
-### 📚 参考资料
-
-- [URDF Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html)
-- [Using Xacro](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/Using-Xacro-to-Clean-Up-a-URDF-File.html)
-- [tf2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Main.html)
-- [RViz User Guide](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html)
+- `carter_description` package；
+- `display.launch.py`；
+- RViz 截图；
+- TF tree 截图或 PDF；
+- 一页 Carter 坐标系约定说明。
 
 ---
 
-## 8. 🛠️ Week 3 - Carter 底盘驱动与 ros2_control
+## 9. ⚙️ Week 3 — Carter 底盘 bringup 与差速控制
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将把高层速度指令连接到底盘真实运动。
+主题：
 
-### 📌 主题
-
-- `/cmd_vel` 到左右轮速度转换；
+- `/cmd_vel` 到左右轮速度；
 - 编码器 tick 到轮速；
-- 轮速里程计；
+- 里程计基础；
 - `ros2_control`；
 - `diff_drive_controller`；
-- command timeout；
-- 速度和加速度限制；
-- 急停和人工接管。
+- 速度限制与加速度限制；
+- watchdog 与急停；
+- 第一次真机运动安全流程。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- Carter 底盘硬件接口；
-- 差速控制链路；
-- 如何从编码器计算里程计；
-- 为什么安全机制是软件架构的一部分。
+- 在仿真或 fake hardware 模式下测试底盘驱动；
+- 低速前进；
+- 原地旋转；
+- 检查编码器正负号；
+- 发布 `/odom` 和 `odom -> base_link`。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-硬件检查重点：
+重点：
 
-```text
-1. 左右轮方向是否正确
-2. 编码器正负号是否正确
-3. /cmd_vel 是否能控制底盘
-4. /odom 是否连续
-5. odom -> base_link TF 是否稳定
-6. 限速是否生效
-7. 急停是否可用
+- 左右轮方向；
+- 编码器符号；
+- `/cmd_vel` 没收到；
+- `/odom` 跳变；
+- TF 没发布；
+- 速度设置不安全。
+
+建议携带信息：
+
+```bash
+ros2 topic echo /cmd_vel
+ros2 topic echo /joint_states --once
+ros2 topic echo /odom --once
+ros2 run tf2_ros tf2_echo odom base_link
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
 每组演示：
 
-```text
-1. 直线 1 米
-2. 原地旋转 90 度
-3. 方形轨迹
-4. 发布 /odom
-5. 发布 /tf
-6. 底盘参数表
-```
+- 直线运动；
+- 原地旋转；
+- 小方形轨迹；
+- 稳定 `/odom`；
+- 有效 `/tf`；
+- 安全停止行为。
 
-### 📦 交付物
-
-- Carter bringup launch 文件；
-- 底盘驱动配置；
-- 轮半径、轮距、编码器分辨率表；
-- 简短测试报告。
-
-### 📚 参考资料
-
-- [ros2_control Documentation](https://control.ros.org/)
-- [diff_drive_controller](https://control.ros.org/master/doc/ros2_controllers/diff_drive_controller/doc/userdoc.html)
-- [ROS 2 Launch Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Launch/Launch-Main.html)
+这是课程第一个大关口。底盘不稳定，后面的 SLAM 和 Nav2 都会不稳定。
 
 ---
 
-## 9. 📡 Week 4 - LiDAR、IMU、rosbag 与状态估计
+## 10. 👀 Week 4 — LiDAR、IMU、rosbag 与状态估计
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将验证机器人传感器，并融合里程计与 IMU 数据。
-
-### 📌 主题
+主题：
 
 - `sensor_msgs/LaserScan`；
 - `sensor_msgs/Imu`；
-- frame_id 与 timestamp 一致性；
-- rosbag 记录和回放；
-- 里程计漂移；
-- EKF 基础；
+- timestamp 与 `frame_id`；
+- 传感器位置与 TF；
+- 使用 rosbag 复现实验；
+- raw odometry 与 filtered odometry；
 - `robot_localization`；
-- raw odometry 与 filtered odometry 对比。
+- EKF 配置。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- ROS 2 中的 LiDAR 和 IMU 数据长什么样；
-- 常见传感器坐标系错误；
-- 如何记录可复现实验；
-- 基于 EKF 的状态估计如何帮助导航。
+- 在 RViz 中显示 LiDAR；
+- 检查 IMU 方向与噪声；
+- 记录 Carter 运动数据；
+- 配置 EKF；
+- 对比 raw `/odom` 与 filtered odometry。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-检查重点：
+重点：
 
-```text
-1. /scan 是否稳定
-2. /imu 是否稳定
-3. /scan 和 /imu 的 frame_id 是否正确
-4. /odom 是否异常跳变
-5. /odometry/filtered 是否发布
-6. rosbag 回放是否能复现问题
+- `/scan` frame 错误；
+- LiDAR 频率不稳定；
+- IMU 方向不一致；
+- EKF 不输出；
+- bag 回放问题；
+- 时间戳问题。
+
+建议携带信息：
+
+```bash
+ros2 topic hz /scan
+ros2 topic echo /imu --once
+ros2 topic echo /odometry/filtered --once
+ros2 bag info <bag_folder>
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
-每组提交：
+提交：
 
-```text
-1. 一段 Carter 运动 rosbag
-2. ekf.yaml
-3. raw odom 与 filtered odom 对比
-4. 传感器 TF 检查表
-5. 一次传感器调试记录
-```
-
-### 📦 交付物
-
-- `carter_sensors` launch 文件；
-- `carter_localization` 配置；
-- rosbag 文件或链接；
-- odometry 对比图或截图。
-
-### 📚 参考资料
-
-- [sensor_msgs Package](https://docs.ros.org/en/humble/p/sensor_msgs/)
-- [robot_localization Documentation](https://docs.ros.org/en/melodic/api/robot_localization/html/index.html)
-- [Nav2: Setting Up Odometry](https://docs.nav2.org/setup_guides/odom/setup_robot_localization.html)
-- [Recording and Playing Back Data](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Recording-And-Playing-Back-Data/Recording-And-Playing-Back-Data.html)
+- 一段 Carter 运动 rosbag；
+- `ekf.yaml`；
+- raw odometry 与 filtered odometry 对比；
+- 传感器 TF 检查表；
+- RViz 中 LiDAR 截图。
 
 ---
 
-## 10. 🗺️ Week 5 - 室内 SLAM 建图
+## 11. 🗺️ Week 5 — 室内 SLAM 建图
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将使用 Carter 生成可用的室内 2D 地图。
+主题：
 
-### 📌 主题
-
-- 2D LiDAR SLAM；
+- 2D SLAM 基本概念；
 - scan matching；
-- pose graph；
+- pose graph 直觉；
 - loop closure；
 - SLAM Toolbox；
-- 地图保存与加载；
-- 地图质量评估；
-- 好的建图路线设计。
+- 地图分辨率；
+- 好的建图路线设计；
+- 保存 `map.yaml` 和地图图片。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- 为什么 SLAM 需要 odometry、LiDAR 和 TF；
-- 如何采集一段好的建图数据；
-- 如何识别地图变形和墙体重影；
-- 如何保存和复用地图。
+- 运行 SLAM Toolbox；
+- 在简单室内环境建图；
+- 保存地图；
+- 回放建图 bag；
+- 检查地图质量。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-建图检查重点：
+重点：
 
-```text
-1. 地图是否有严重重影
-2. 主要墙体是否闭合
-3. LiDAR 高度是否合理
-4. base_link 到 laser_link 的 transform 是否正确
-5. odometry 漂移是否过大
-6. 是否理解动态障碍物干扰
+- 墙体重影；
+- 里程计漂移；
+- LiDAR frame 错误；
+- 建图路线不好；
+- 动态物体干扰；
+- 地图保存和加载问题。
+
+建议携带信息：
+
+```bash
+ros2 topic hz /scan
+ros2 topic echo /odom --once
+ros2 run tf2_tools view_frames
+ros2 bag info <mapping_bag>
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
-每组提交：
+提交：
 
-```text
-1. 室内 map.yaml 和地图图片
-2. 建图 rosbag
-3. mapping.launch.py
-4. 地图质量分析
-5. 一次失败建图案例说明
-```
-
-### 📦 交付物
-
-- 室内地图文件；
-- SLAM launch 文件；
-- 建图测试记录；
-- 一个失败案例分析。
-
-### 📚 参考资料
-
-- [SLAM Toolbox GitHub](https://github.com/SteveMacenski/slam_toolbox)
-- [SLAM Toolbox on ROS Index](https://index.ros.org/r/slam_toolbox/)
-- [Nav2 Tutorials](https://docs.nav2.org/tutorials/index.html)
+- 室内地图文件（`map.yaml` + image）；
+- mapping launch 文件；
+- 建图 rosbag；
+- 地图质量报告；
+- 至少一个失败案例和原因分析。
 
 ---
 
-## 11. 🧭 Week 6 - Nav2 室内导航与避障
+## 12. 🧭 Week 6 — Nav2 室内导航与避障
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将配置 Nav2 完成室内导航。
-
-### 📌 主题
+主题：
 
 - Nav2 架构；
 - map server；
@@ -501,216 +470,209 @@ Week 1 开始前，学生应至少了解：
 - controller server；
 - behavior tree navigator；
 - global costmap 与 local costmap；
-- obstacle layer；
-- inflation layer；
-- recovery behaviors；
-- RViz2 目标点设置。
+- obstacle layer 与 inflation layer；
+- RViz 发送目标点；
+- 如何避免“玄学调参”。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- Nav2 如何把目标点转换成机器人运动；
-- global planning 和 local control 的区别；
-- 为什么 costmap 调参很重要；
-- 如何调试导航失败。
+- 加载室内地图；
+- 设置 initial pose；
+- 发送单点目标；
+- 查看 global path；
+- 查看 local costmap；
+- 在安全范围内调整少量关键参数。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-Nav2 检查重点：
+重点：
 
-```text
-1. AMCL 或 localization 是否稳定
-2. costmap 是否正确显示障碍物
-3. global plan 是否生成
-4. local controller 是否输出 /cmd_vel
-5. 机器人是否严重振荡
-6. 是否理解 recovery behavior
+- AMCL 不收敛；
+- map frame 不匹配；
+- costmap 不显示障碍；
+- global planner 失败；
+- controller 不输出 `/cmd_vel`；
+- 机器人振荡或卡住。
+
+建议携带信息：
+
+```bash
+ros2 node list | grep nav
+ros2 topic list | grep costmap
+ros2 topic echo /cmd_vel --once
+ros2 run tf2_tools view_frames
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
 每组演示：
 
-```text
-1. 单点导航
-2. 多点导航
-3. 动态障碍物避障
-4. 至少一次失败案例分析
-5. carter_nav2_params.yaml 参数说明
-```
+- 单点室内导航；
+- 多点室内导航；
+- 简单动态障碍避障；
+- 一个失败案例和 root-cause 分析。
 
-### 📦 交付物
-
-- `carter_navigation.launch.py`；
-- `carter_nav2_params.yaml`；
-- 导航演示视频；
-- 参数调优记录。
-
-### 📚 参考资料
-
-- [Nav2 Documentation](https://docs.nav2.org/)
-- [Nav2 Setup Guides](https://docs.nav2.org/setup_guides/index.html)
-- [Nav2 Configuration Guide](https://docs.nav2.org/configuration/index.html)
-- [Nav2 Tutorials](https://docs.nav2.org/tutorials/index.html)
+这是课程第二个大关口。目标不是完美导航，而是可解释的导航。
 
 ---
 
-## 12. 🌤️ Week 7 - 室外 waypoint 导航与 GPS / RTK 扩展
+## 13. 🌤️ Week 7 — 室外 waypoint 导航与 GPS / RTK 扩展
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将理解室内导航与室外 waypoint 导航的差异。
+主题：
 
-### 📌 主题
-
-- 室外导航挑战；
+- 室内导航与室外导航的区别；
 - GPS 与 RTK 基础；
 - `sensor_msgs/NavSatFix`；
+- IMU 航向；
+- local EKF 与 global EKF 概念；
 - `navsat_transform_node`；
-- local EKF 与 global EKF；
 - waypoint following；
-- 室外安全；
-- 人工接管。
+- 室外测试安全流程。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- 为什么 GPS 不是室内定位的直接替代品；
-- 如何融合 IMU、轮速里程计和 GPS；
-- 如何定义和测试室外 waypoint；
-- 如何设计安全的室外实验。
+- 记录室外传感器数据；
+- 检查 GPS fix 质量；
+- 配置简单 waypoint 路线；
+- 低速室外运动测试；
+- 在可用条件下对比 GPS / RTK 效果。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-室外检查重点：
+重点：
 
-```text
-1. GPS 是否有 fix
-2. IMU 航向是否合理
-3. 坐标转换是否合理
-4. waypoint 是否落在正确位置
-5. 机器人是否低速安全运行
-6. 是否具备人工接管
+- GPS 没有 fix；
+- 坐标转换错误；
+- IMU yaw 不稳定；
+- 机器人航向不一致；
+- 室外测试不安全；
+- waypoint 文件错误。
+
+建议携带信息：
+
+```bash
+ros2 topic echo /fix --once
+ros2 topic echo /imu --once
+ros2 topic echo /odometry/global --once
+ros2 bag info <outdoor_bag>
 ```
 
-### ✅ 周五 checkpoint
+### 周五 checkpoint
 
-每组演示或提交：
-
-```text
-1. 3-5 个室外 waypoint 跟随演示
-2. 低速避障或人工接管流程
-3. 室外失败案例分析
-4. GPS / IMU / odom 数据日志
-```
-
-如果 GPS / RTK 条件不可靠，本周任务可降级为：
-
-```text
-1. 使用轮速里程计和 IMU 完成短距离室外 waypoint
-2. 记录 GPS 数据
-3. 离线 GPS / EKF 分析
-```
-
-### 📦 交付物
+提交：
 
 - 室外 waypoint 文件；
-- GPS / EKF 配置；
-- 室外安全 checklist；
-- rosbag 或日志；
-- 简短室外实验报告。
+- 室外 bag 或演示视频；
+- 定位配置文件；
+- 安全 checklist；
+- 失败案例分析。
 
-### 📚 参考资料
+如果 GPS / RTK 不稳定，则降级目标为：
 
-- [Nav2 GPS Waypoint Following Tutorial](https://docs.nav2.org/tutorials/docs/navigation2_with_gps.html)
-- [robot_localization Documentation](https://docs.ros.org/en/melodic/api/robot_localization/html/index.html)
-- [sensor_msgs/NavSatFix](https://docs.ros.org/en/humble/p/sensor_msgs/msg/NavSatFix.html)
+- 轮速计 + IMU 的短距离室外 waypoint 测试；
+- GPS 数据记录和离线分析；
+- 仿真中的 waypoint navigation 演示。
 
 ---
 
-## 13. 🏁 Week 8 - Capstone 集成与 Final Demo
+## 14. 🏁 Week 8 — Capstone 集成与最终演示
 
-### 🎯 学习目标
+### 周一主课 + guided lab
 
-学生将集成完整 Carter 移动机器人导航系统。
-
-### 📌 主题
+主题：
 
 - 系统集成；
 - launch 文件组织；
 - 参数管理；
-- 实验可复现性；
-- final demo 设计；
-- 工程报告写作；
-- 失败分析与未来改进。
+- 可复现实验；
+- final report 结构；
+- 演示流程设计；
+- 如何讲清楚失败案例。
 
-### 🧑‍🏫 周一主课
+实验：
 
-- 如何组织最终系统；
-- 如何写可复现运行说明；
-- 如何解释系统架构和工程权衡；
-- 如何准备机器人演示。
+- 组装完整 bringup pipeline；
+- 检查 launch 命令；
+- 检查 TF tree；
+- 检查 topic；
+- 记录证据。
 
-### 🩺 周三 clinic
+### 周三 clinic
 
-最后检查重点：
+重点：
 
-```text
-1. bringup launch 是否可用
-2. TF tree 是否正确
-3. 传感器 topic 是否可用
-4. localization 是否稳定
-5. Nav2 参数是否正确加载
-6. 地图和 bag 是否整理好
-7. demo 路线是否安全
-```
+- 最终集成；
+- launch 文件清理；
+- 地图和参数一致性；
+- 演示排练；
+- 证据收集。
 
-### 🏁 周五 Final Demo
+### 周五 final demo
 
-每组展示 10-15 分钟：
+每组 10–15 分钟展示：
 
-```text
-1. 系统架构
-2. Carter bringup
-3. 室内 SLAM / localization / navigation
-4. 动态障碍物避障
-5. 室外 waypoint 导航或扩展任务
-6. 失败案例与改进计划
-```
+- 系统架构；
+- Carter bringup；
+- 室内地图 / 定位；
+- 室内导航与避障；
+- 室外 waypoint 或降级演示；
+- 失败与经验总结；
+- 未来改进方向。
 
-### 📦 最终交付物
+最终提交：
 
 - Git 仓库；
 - launch 文件；
 - 参数文件；
-- 地图；
-- rosbag 文件或链接；
+- 地图文件；
+- rosbag 文件；
 - 演示视频；
 - final report；
-- presentation slides；
-- 包含可复现运行说明的 README。
+- 复现实验说明。
 
 ---
 
-## 14. 🧮 建议评分方式
+## 15. 🧪 考核建议
 
 | 项目 | 占比 |
 |---|---:|
-| 每周实验与作业 | 30% |
-| Carter 真机 bringup | 15% |
-| 室内 SLAM 与 Nav2 导航 | 20% |
+| 每周实验与证据提交 | 30% |
+| Carter bringup checkpoint | 15% |
+| 室内 SLAM + Nav2 导航 | 20% |
 | 室外 waypoint / GPS 实验 | 15% |
-| Final demo 与报告 | 20% |
+| Capstone 演示与报告 | 20% |
 
 ---
 
-## 15. 🧠 工程思维要求
+## 16. 🧯 补救路径
 
-本课程重视基于证据的调试。一个好的回答不只是“它能跑”，而是：
+机器人课程必须有 fallback。某一阶段失败时，学生仍然应该能继续学习下一阶段。
 
-```text
-1. 你运行了什么命令？
-2. 哪个 topic 或 transform 证明它正常？
-3. 你记录了什么数据？
-4. 你观察到了什么失败？
-5. 哪个修改改善了结果？
-6. 还有什么不确定？
-```
+| 问题 | 补救路径 |
+|---|---|
+| Linux / ROS 2 环境失败 | 使用 Linux2Go 标准系统 |
+| Carter driver 不稳定 | 使用教师提供的标准底盘驱动 |
+| 真机数量不足 | 使用仿真或录制好的 rosbag |
+| 建图失败 | 使用教师提供的标准地图继续 Week 6 |
+| Nav2 参数不稳定 | 从保守参数模板开始 |
+| GPS / RTK 不可靠 | 使用室外 bag 离线分析或仿真 waypoint 任务 |
+
+---
+
+## 17. 🏆 什么叫课程成功
+
+一个优秀的 final project 不一定是跑得最快的机器人。
+
+优秀的小组应该能够清楚解释：
+
+- 每个 node 做什么；
+- 每个 topic 传递什么；
+- 每个 TF frame 如何连接；
+- 里程计和传感器如何影响定位；
+- Nav2 为什么成功或失败；
+- 哪些证据支撑实验结果；
+- 下一步应该如何改进。
+
+这就是本课程真正希望训练的工程能力。

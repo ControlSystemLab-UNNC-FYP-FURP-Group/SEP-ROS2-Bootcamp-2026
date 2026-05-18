@@ -1,0 +1,65 @@
+<svg width="1280" height="350" viewBox="0 0 1280 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1280" y2="350" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#EDF7F5"/>
+    </linearGradient>
+    <linearGradient id="line" x1="120" y1="175" x2="1160" y2="175" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C4DFF"/>
+      <stop offset="0.5" stop-color="#2B6CB0"/>
+      <stop offset="1" stop-color="#1B7F79"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="350" rx="28" fill="url(#bg)"/>
+  <path d="M126 174 H1150" stroke="url(#line)" stroke-width="7" stroke-linecap="round"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif">
+    <g transform="translate(75 78)">
+      <circle cx="55" cy="96" r="45" fill="#7C4DFF"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">0</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Prep</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">Linux + ROS 2</text>
+    </g>
+    <g transform="translate(215 78)">
+      <circle cx="55" cy="96" r="45" fill="#6258D9"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">1</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">ROS Basics</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">Nodes + topics</text>
+    </g>
+    <g transform="translate(355 78)">
+      <circle cx="55" cy="96" r="45" fill="#4E64C5"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">2</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Model</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">URDF + TF</text>
+    </g>
+    <g transform="translate(495 78)">
+      <circle cx="55" cy="96" r="45" fill="#3F70B5"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">3</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Bringup</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">cmd_vel → odom</text>
+    </g>
+    <g transform="translate(635 78)">
+      <circle cx="55" cy="96" r="45" fill="#2B7DB0"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">4</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Sensors</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">LiDAR + IMU</text>
+    </g>
+    <g transform="translate(775 78)">
+      <circle cx="55" cy="96" r="45" fill="#198C9D"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">5</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">SLAM</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">Build maps</text>
+    </g>
+    <g transform="translate(915 78)">
+      <circle cx="55" cy="96" r="45" fill="#1B9286"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">6</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Nav2</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">Avoid obstacles</text>
+    </g>
+    <g transform="translate(1055 78)">
+      <circle cx="55" cy="96" r="45" fill="#1B7F79"/>
+      <text x="55" y="105" text-anchor="middle" font-size="32" fill="white">7–8</text>
+      <text x="55" y="174" text-anchor="middle" font-size="18" fill="#10233F" font-weight="700">Outdoor + Demo</text>
+      <text x="55" y="202" text-anchor="middle" font-size="15" fill="#4A6078">Waypoint + capstone</text>
+    </g>
+  </g>
+</svg>

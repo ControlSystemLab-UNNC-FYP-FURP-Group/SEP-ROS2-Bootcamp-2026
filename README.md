@@ -1,337 +1,364 @@
-# 🤖 ROS 2 Carter Bootcamp
+<p align="center">
+  <img src="assets/banner.svg" alt="ROS 2 Carter Bootcamp banner" width="100%">
+</p>
 
-> An 8-week hands-on ROS 2 summer bootcamp for sophomore and junior engineering/science students.  
-> Students will start from basic Linux and ROS 2 usage and gradually build a complete mobile robot navigation stack on our Carter differential-drive robot platform.
+<p align="center">
+  <a href="https://docs.ros.org/en/humble/"><img alt="ROS 2 Humble" src="https://img.shields.io/badge/ROS%202-Humble-22314E?style=for-the-badge&logo=ros&logoColor=white"></a>
+  <a href="https://ubuntu.com/download/desktop"><img alt="Ubuntu 22.04" src="https://img.shields.io/badge/Ubuntu-22.04-E95420?style=for-the-badge&logo=ubuntu&logoColor=white"></a>
+  <a href="https://control-system-lab-at-unnc.github.io/homepage-v2/"><img alt="Control System Lab UNNC" src="https://img.shields.io/badge/Lab-Control%20System%20Lab%20%40%20UNNC-1B7F79?style=for-the-badge"></a>
+  <img alt="Duration" src="https://img.shields.io/badge/Duration-Week%200%20%2B%208%20Weeks-7C4DFF?style=for-the-badge">
+</p>
+
+<h1 align="center">🤖 ROS 2 Carter Bootcamp</h1>
+
+<p align="center">
+  <b>From a blank terminal to a robot that can map, localize, navigate, avoid obstacles, and tell a story with data.</b>
+</p>
+
+<p align="center">
+  <a href="#-start-here">Start Here</a> ·
+  <a href="docs/course_outline_en.md">English Course Outline</a> ·
+  <a href="docs/course_outline_zh.md">中文课程大纲</a> ·
+  <a href="docs/asking_questions.md">How to Ask Questions</a> ·
+  <a href="https://control-system-lab-at-unnc.github.io/homepage-v2/">Lab Homepage</a>
+</p>
 
 ---
 
-## 🔗 Quick Links
+## 🌟 Why this bootcamp exists
 
-- [Course Outline - English](docs/course_outline_en.md)
-- [课程大纲 - 中文](docs/course_outline_zh.md)
+Robotics becomes real the moment software touches hardware.
+
+A line of code becomes wheel motion.  
+A coordinate frame becomes a physical pose.  
+A LiDAR scan becomes a map.  
+A map becomes a plan.  
+A plan becomes a robot quietly finding its way through the world.
+
+This bootcamp is designed to guide students through that transformation. Over 8 formal teaching weeks, you will start with Linux and ROS 2 basics, then gradually build a complete mobile robot navigation stack on our **Carter differential-drive robot platform**.
+
+The goal is not to memorize commands. The goal is to develop the instinct of a robotics engineer:
+
+> **observe → measure → debug → test → document → improve**
+
+---
+
+## 🚀 What is ROS 2, and why should you care?
+
+**ROS 2** is the shared language of modern robot software. It connects robot drivers, sensors, algorithms, simulations, visualization tools, and navigation stacks into one distributed system.
+
+In research, ROS 2 helps a lab prototype become reproducible.  
+In engineering, ROS 2 helps separate messy robot systems into testable modules.  
+In industry, ROS 2 and the surrounding ecosystem are increasingly used as the foundation for mobile robots, manipulation, simulation, perception, navigation, and factory automation.
+
+ROS 2 is not magic. It will not make a robot autonomous by itself.  
+But it gives you the infrastructure to build autonomy without reinventing every wheel.
+
+| What ROS 2 gives you | Why it matters in this course |
+|---|---|
+| 🧩 Nodes, topics, services, actions | Split robot software into understandable pieces |
+| 🧭 TF coordinate transforms | Explain where every sensor and robot body is |
+| 📦 Packages and launch files | Turn experiments into reusable systems |
+| 🎥 RViz, rosbag, CLI tools | See, record, replay, and debug robot behavior |
+| 🗺️ Nav2, SLAM Toolbox, robot_localization | Build the navigation stack that makes Carter move intelligently |
+| 🌍 Community ecosystem | Learn skills that transfer across labs, robots, and companies |
+
+Useful starting points:
+
+- [ROS 2 Humble Documentation](https://docs.ros.org/en/humble/)
+- [ROS 2 Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
+- [Nav2 Documentation](https://docs.nav2.org/)
+- [ROS-Industrial](https://rosindustrial.org/)
 - [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
 
 ---
 
-## 🏫 Organizer / Lab
+## 🎯 Project goal
 
-This bootcamp is organized by the [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/).
+This repository is the **course hub** for the ROS 2 Carter Bootcamp.
 
----
+It is where students, teaching assistants, and instructors will find:
 
-## 🎯 Project Goal
+- 📣 course announcements;
+- 🗓️ weekly plans and checkpoints;
+- 🧪 lab instructions and starter code;
+- 🖥️ lecture slides, updated before each Monday lecture;
+- 🧰 Carter bringup resources;
+- 🧭 debugging checklists;
+- 📚 curated learning resources;
+- 🧑‍🔧 question templates and clinic expectations;
+- 🏁 final project requirements.
 
-This repository is the public course hub for the **ROS 2 Carter Bootcamp**. It is designed to help students, teaching assistants, and instructors share:
-
-- course announcements;
-- weekly learning objectives;
-- lecture slides, which will be updated before each Monday lecture;
-- lecture notes and lab instructions;
-- Carter robot bringup resources;
-- debugging checklists;
-- assignment requirements;
-- final project expectations;
-- useful ROS 2, Linux, navigation, SLAM, and robotics references.
-
-The bootcamp is not intended to be a purely theoretical ROS 2 lecture series. The practical goal is to help students build a working mobile robot system step by step, from ROS 2 basics to indoor and outdoor autonomous navigation.
-
----
-
-## 👥 Target Students
-
-This course is designed for undergraduate students with engineering or science backgrounds, especially sophomore and junior students who may have:
-
-- basic programming experience;
-- limited or no prior ROS experience;
-- limited Linux command-line experience;
-- interest in robotics, autonomous systems, controls, mechatronics, or AI systems.
-
-No prior ROS 2 experience is required.
-
----
-
-## 🧭 Practical Learning Objectives
-
-By the end of the bootcamp, each student team should be able to:
-
-1. use Linux, Git, terminal tools, and ROS 2 command-line tools confidently;
-2. create and build ROS 2 packages in a workspace;
-3. understand ROS 2 nodes, topics, services, actions, parameters, launch files, and rosbag;
-4. model the Carter robot using URDF / Xacro and inspect the TF tree;
-5. control a differential-drive robot using `/cmd_vel`;
-6. publish and debug `/odom`, `/tf`, `/joint_states`, `/scan`, and `/imu`;
-7. use wheel odometry and IMU data for state estimation;
-8. generate an indoor 2D map using SLAM Toolbox;
-9. configure Nav2 for indoor localization, planning, control, and obstacle avoidance;
-10. perform basic outdoor waypoint navigation with GPS / RTK when available;
-11. document experiments with commands, screenshots, logs, rosbag files, maps, and parameter files;
-12. explain failure cases and propose engineering improvements.
-
----
-
-## 📦 Available Course Resources
-
-This repository may include or link to:
+By the end of the bootcamp, each team should be able to make Carter:
 
 ```text
-README.md                         Project homepage
-docs/course_outline_en.md          Full English course outline
-docs/course_outline_zh.md          Full Chinese course outline
-slides/                            Weekly lecture slides
-labs/                              Weekly lab instructions and starter code
-assignments/                       Weekly assignments and grading rubrics
-checklists/                        Debugging and safety checklists
-carter_examples/                   Carter robot reference packages
-resources/                         Linux, Git, ROS 2, Nav2, and troubleshooting notes
+receive /cmd_vel
+  ↓
+move as a differential-drive robot
+  ↓
+publish odometry and TF
+  ↓
+read LiDAR and IMU data
+  ↓
+estimate robot state
+  ↓
+build an indoor map
+  ↓
+localize inside the map
+  ↓
+navigate with Nav2
+  ↓
+avoid obstacles
+  ↓
+perform basic outdoor waypoint navigation
+  ↓
+explain what worked, what failed, and why
 ```
 
-Recommended initial folder structure:
+<p align="center">
+  <img src="assets/course_map.svg" alt="Course learning path" width="100%">
+</p>
+
+---
+
+## 🧭 Start here
+
+| If you are... | Go here |
+|---|---|
+| 🧑‍🎓 A student joining the course | Read [Week 0 preparation](#-week-0-preparation-now--2026-06-08) and [How to ask questions](docs/asking_questions.md) |
+| 🧑‍🏫 A teaching assistant | Check the weekly checkpoint table and clinic format |
+| 🤖 Working on Carter hardware | Start from the Carter interface convention and safety rules |
+| 🧪 Looking for the full schedule | Open the [English outline](docs/course_outline_en.md) or [中文课程大纲](docs/course_outline_zh.md) |
+| 📢 Looking for slides | Check the `slides/` folder before each Monday lecture |
+
+---
+
+## 📚 Course documents
+
+| Document | Language | Purpose |
+|---|---:|---|
+| [📘 Course Outline - English](docs/course_outline_en.md) | English | Full 8-week structure, weekly tasks, checkpoints, deliverables |
+| [📗 课程大纲 - 中文](docs/course_outline_zh.md) | 中文 | 中文版完整课程计划、每周任务、验收要求 |
+| [🧠 How to Ask Questions](docs/asking_questions.md) | EN / 中文 | How to prepare logs, screenshots, rosbag files, and reproducible questions |
+| [🏫 Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/) | Website | Organizer / lab homepage |
+
+> 📌 **Slides policy:** weekly slides will be updated in `slides/` before the Monday lecture of that week.
+
+---
+
+## 🗓️ Timeline
+
+> Week 0 is a preparation window before the formal bootcamp starts.  
+> The Linux2Go teaching system will be distributed on **2026-06-08**.
+
+| Phase | Time | Focus | Output |
+|---|---|---|---|
+| 🧰 Week 0 | Now → 2026-06-08 | VMware, Ubuntu 22.04, ROS 2 Humble basics | Students can use terminal, install software, run ROS 2 demos |
+| 🧩 Week 1 | Formal week 1 | ROS 2 basics and tools | Publisher, subscriber, launch file, rosbag |
+| 🧱 Week 2 | Formal week 2 | Carter model, URDF, Xacro, TF | Robot model + TF tree |
+| ⚙️ Week 3 | Formal week 3 | Carter base bringup | `/cmd_vel` → wheels → `/odom` |
+| 👀 Week 4 | Formal week 4 | LiDAR, IMU, rosbag, EKF | Sensor validation + filtered odometry |
+| 🗺️ Week 5 | Formal week 5 | Indoor SLAM | Indoor map + mapping report |
+| 🧭 Week 6 | Formal week 6 | Nav2 indoor navigation | Single-goal, multi-goal, obstacle avoidance |
+| 🌤️ Week 7 | Formal week 7 | Outdoor waypoint navigation | GPS / RTK or outdoor waypoint demo |
+| 🏁 Week 8 | Formal week 8 | Capstone integration | Final demo + report + reproducible evidence |
+
+---
+
+## 🔁 Weekly rhythm
+
+Every week follows the same rhythm so that learning, debugging, and validation stay connected.
+
+| Day | Session | Vibe | What happens |
+|---|---|---|---|
+| Monday afternoon | 🎙️ Lecture + guided lab | Learn and start | New concepts, live demo, starter task, updated slides |
+| Wednesday afternoon | 🩺 Clinic | Diagnose and unblock | Bring logs, screenshots, TF tree, rosbag, and current failure |
+| Friday afternoon | ✅ Q&A + checkpoint | Prove and reflect | Weekly demo, code/parameter review, failure analysis |
+
+This structure is intentional: mobile robotics is cumulative. If odometry is wrong in Week 3, SLAM will suffer in Week 5, and Nav2 will look “mysterious” in Week 6.
+
+---
+
+## 🧰 Week 0 preparation: now → 2026-06-08
+
+Before Linux2Go is distributed, students should slowly explore:
+
+- 🖥️ VMware Workstation / VMware Fusion or another virtual machine tool;
+- 🐧 Ubuntu 22.04;
+- 💻 Linux terminal basics;
+- 🤖 ROS 2 Humble installation and beginner demos;
+- 🧠 the habit of asking reproducible technical questions.
+
+Suggested Week 0 resources:
+
+- [Ubuntu Desktop Download](https://ubuntu.com/download/desktop)
+- [Ubuntu 22.04 Releases](https://releases.ubuntu.com/22.04/)
+- [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
+- [ROS 2 Humble Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
+
+Suggested commands to try:
+
+```bash
+pwd
+ls
+cd
+mkdir
+touch
+cp
+mv
+rm
+cat
+less
+grep
+find
+chmod
+sudo apt update
+```
+
+Suggested ROS 2 smoke test:
+
+```bash
+source /opt/ros/humble/setup.bash
+ros2 --help
+ros2 doctor
+ros2 run demo_nodes_cpp talker
+ros2 run demo_nodes_py listener
+```
+
+---
+
+## 💬 How to ask questions
+
+In this course, asking a good question is part of the engineering training.
+
+We will use the spirit of [How To Ask Questions The Smart Way / 提问的智慧](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/tree/main): respect other people's debugging time, show what you tried, and make the problem reproducible.
+
+Before posting a question or coming to clinic, prepare:
+
+```text
+1. What were you trying to achieve?
+2. What command did you run?
+3. What did you expect to happen?
+4. What actually happened?
+5. What error message or log did you see?
+6. What have you already tried?
+7. Can you provide screenshots, TF tree, topic list, rosbag, or parameter files?
+```
+
+A good robotics question often includes:
+
+```bash
+ros2 node list
+ros2 topic list
+ros2 topic hz /scan
+ros2 topic echo /odom --once
+ros2 run tf2_tools view_frames
+ros2 doctor
+```
+
+Read the full course-specific guide here: [🧠 How to Ask Questions](docs/asking_questions.md).
+
+---
+
+## 🤖 Carter robot interface convention
+
+To make the course scalable, Carter should expose a consistent ROS 2 interface.
+
+### Required input
+
+```text
+/cmd_vel                         geometry_msgs/msg/Twist or TwistStamped
+```
+
+### Required outputs
+
+```text
+/odom                            nav_msgs/msg/Odometry
+/tf                              odom -> base_link or base_footprint
+/joint_states                    sensor_msgs/msg/JointState
+/scan                            sensor_msgs/msg/LaserScan
+/imu                             sensor_msgs/msg/Imu
+/battery_state                   sensor_msgs/msg/BatteryState, optional
+/diagnostics                     diagnostic_msgs/msg/DiagnosticArray, optional
+```
+
+### Expected launch files
+
+```text
+carter_bringup.launch.py
+carter_description.launch.py
+carter_sensors.launch.py
+carter_localization.launch.py
+carter_mapping.launch.py
+carter_navigation.launch.py
+```
+
+---
+
+## 🧯 Safety rules
+
+Real robots are not simulations. Treat Carter as a moving machine.
+
+- Keep speed low during early bringup.
+- Keep one person ready for emergency stop.
+- Never test navigation in a crowded area.
+- Do not stand in front of the robot during first motion tests.
+- Use a lifted / supported robot for wheel direction and encoder tests.
+- Always verify `/cmd_vel` timeout and manual override behavior.
+- Stop the robot first; debug later.
+
+---
+
+## 🗂️ Repository structure
 
 ```text
 ros2-carter-bootcamp/
 ├── README.md
+├── assets/
+│   ├── banner.svg
+│   └── course_map.svg
 ├── docs/
 │   ├── course_outline_en.md
-│   └── course_outline_zh.md
+│   ├── course_outline_zh.md
+│   └── asking_questions.md
 ├── slides/
+│   └── .gitkeep
 ├── labs/
+│   └── .gitkeep
 ├── assignments/
+│   └── .gitkeep
 ├── checklists/
+│   └── .gitkeep
 ├── carter_examples/
-└── resources/
+│   └── .gitkeep
+├── resources/
+│   └── .gitkeep
+└── .github/
+    └── ISSUE_TEMPLATE/
+        ├── question.md
+        └── robot_debug.md
 ```
 
 ---
 
-## 🗓️ Course Timeline
+## 🏁 Final destination
 
-The course consists of one preparation period and eight formal teaching weeks.
+By the end of the bootcamp, a successful team will not only have a robot that moves.
 
-| Phase | Time | Focus |
-|---|---|---|
-| Week 0 | Now to 2026-06-08 | Self-paced preparation: VMware, Ubuntu, Linux basics, ROS 2 Humble exploration |
-| 2026-06-08 | Linux2Go distribution | Students receive the pre-configured course system |
-| Weeks 1-8 | Formal bootcamp | Weekly lectures, clinics, Q&A, checkpoints, and final project |
+A successful team will have a robot system that can be explained:
 
----
+- what each node does;
+- what each topic means;
+- how each frame is connected;
+- why the robot believes it is at a certain pose;
+- why navigation succeeds or fails;
+- what data proves the result.
 
-## 🔁 Weekly Teaching Rhythm
-
-Each week follows a fixed rhythm.
-
-| Day | Activity | Purpose |
-|---|---|---|
-| Monday afternoon | Lecture + guided lab | Introduce the main topic and start the weekly lab |
-| Wednesday afternoon | Clinic | Diagnose engineering problems and unblock teams |
-| Friday afternoon | Q&A + checkpoint | Review common issues and verify weekly progress |
-
-
-> 📌 **Slides update policy:** weekly slides will be updated before the Monday lecture of that week.
-
-### 🧑‍🏫 Monday: Lecture + Guided Lab
-
-Typical structure:
-
-```text
-00:00 - 00:20  Weekly review and common issues
-00:20 - 01:10  Core concepts
-01:10 - 01:40  Instructor live demo
-01:40 - 02:40  Guided student lab
-02:40 - 03:00  Weekly task briefing
-```
-
-### 🩺 Wednesday: Engineering Clinic
-
-The clinic is for technical diagnosis rather than general discussion. Students should bring concrete evidence:
-
-```text
-1. Commands they ran
-2. Error logs
-3. ros2 node list
-4. ros2 topic list
-5. ros2 topic hz output
-6. rqt_graph or TF tree screenshots
-7. rosbag files when needed
-8. What they already tried
-```
-
-### ✅ Friday: Q&A + Checkpoint
-
-Friday is used to verify whether each team is ready to move on to the next stage.
-
-Each team should be able to answer:
-
-```text
-1. What did we complete this week?
-2. What evidence proves that it works?
-3. What is still broken?
-4. What is the next debugging step?
-```
+That is the difference between “the robot worked once” and “we engineered a robot system.”
 
 ---
 
-## 🚀 Week 0 Preparation
-
-Week 0 runs from now until **2026-06-08**.
-
-Students are encouraged to explore the following before the official Linux2Go system is distributed:
-
-- install VMware;
-- create an Ubuntu 22.04 virtual machine;
-- practice Linux terminal commands;
-- attempt to install ROS 2 Humble;
-- run basic ROS 2 demos;
-- read the beginner ROS 2 tutorials.
-
-Important note:
-
-> Week 0 is for exploration. The official teaching environment will be distributed on Linux2Go on 2026-06-08. It is acceptable if your personal virtual machine setup is incomplete, but you should document the problems you encounter.
-
-Recommended references:
-
-- [Ubuntu Desktop Download](https://ubuntu.com/download/desktop)
-- [Ubuntu 22.04 Releases](https://releases.ubuntu.com/22.04/)
-- [Ubuntu Desktop Installation Guide](https://documentation.ubuntu.com/desktop/en/latest/how-to/install-ubuntu-desktop/)
-- [ROS 2 Humble Documentation](https://docs.ros.org/en/humble/index.html)
-- [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
-- [ROS 2 Humble Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
-- [VMware Workstation / Fusion Download Information](https://knowledge.broadcom.com/external/article/368667/download-and-license-vmware-desktop-hype.html)
-
----
-
-## 🙋 How to Ask Questions
-
-Good engineering questions include reproducible evidence.
-
-Please use this format when asking questions in clinic, GitHub Issues, or discussion channels:
-
-```markdown
-## What I am trying to do
-
-Example: I am trying to launch the Carter robot model in RViz2 and inspect the TF tree.
-
-## What I ran
-
-```bash
-ros2 launch carter_description display.launch.py
-```
-
-## What I expected
-
-Example: RViz2 should show the robot model with base_link, wheels, laser_link, and imu_link.
-
-## What actually happened
-
-Example: RViz2 opens, but the robot model is not visible.
-
-## Logs or screenshots
-
-```text
-Paste the error message here.
-```
-
-## What I already tried
-
-1. Rebuilt the workspace.
-2. Sourced install/setup.bash.
-3. Checked ros2 topic list.
-4. Checked whether robot_description exists.
-```
-
----
-
-## 🛠️ Carter Robot Interface Convention
-
-The Carter platform used in this course is assumed to follow the interface below.
-
-### 📥 Input
-
-```text
-/cmd_vel    geometry_msgs/msg/Twist
-```
-
-### 📤 Core Outputs
-
-```text
-/odom              nav_msgs/msg/Odometry
-/tf                tf2_msgs/msg/TFMessage
-/joint_states      sensor_msgs/msg/JointState
-/scan              sensor_msgs/msg/LaserScan
-/imu               sensor_msgs/msg/Imu
-```
-
-### ➕ Optional Outputs
-
-```text
-/battery_state     sensor_msgs/msg/BatteryState
-/diagnostics       diagnostic_msgs/msg/DiagnosticArray
-/fix               sensor_msgs/msg/NavSatFix
-```
-
-### 🧩 Recommended TF Tree
-
-```text
-map
-└── odom
-    └── base_footprint
-        └── base_link
-            ├── left_wheel_link
-            ├── right_wheel_link
-            ├── laser_link
-            ├── imu_link
-            └── gps_link
-```
-
----
-
-## ⚠️ Safety Rules
-
-Carter is a real mobile robot. All hardware labs must follow these rules:
-
-1. A teaching assistant or instructor must be present during first-time hardware testing.
-2. The first motor test must be performed with the robot lifted or speed-limited.
-3. Emergency stop must be tested before autonomous operation.
-4. A `/cmd_vel` timeout or watchdog must be enabled.
-5. Indoor testing must use conservative speed limits.
-6. Outdoor testing must include human takeover.
-7. Do not run autonomous mode near crowds.
-8. Do not test high-speed motion in unknown environments.
-9. Record failures and near-misses as engineering data, not as personal mistakes.
-
----
-
-## 📚 Main Technical References
-
-### 🏫 Lab
-
-- [Control System Lab @ UNNC](https://control-system-lab-at-unnc.github.io/homepage-v2/)
-
-### 🤖 ROS 2
-
-- [ROS 2 Humble Documentation](https://docs.ros.org/en/humble/index.html)
-- [ROS 2 Humble Tutorials](https://docs.ros.org/en/humble/Tutorials.html)
-- [ROS 2 Humble Installation](https://docs.ros.org/en/humble/Installation.html)
-- [ROS Index](https://index.ros.org/)
-
-### 🧱 Modeling, TF, and Visualization
-
-- [URDF Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/URDF/URDF-Main.html)
-- [tf2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Main.html)
-- [RViz User Guide](https://docs.ros.org/en/humble/Tutorials/Intermediate/RViz/RViz-User-Guide/RViz-User-Guide.html)
-
-### 🧭 Control, SLAM, Localization, and Navigation
-
-- [ros2_control](https://control.ros.org/)
-- [diff_drive_controller](https://control.ros.org/master/doc/ros2_controllers/diff_drive_controller/doc/userdoc.html)
-- [robot_localization](https://docs.ros.org/en/melodic/api/robot_localization/html/index.html)
-- [SLAM Toolbox](https://github.com/SteveMacenski/slam_toolbox)
-- [Nav2 Documentation](https://docs.nav2.org/)
-- [Nav2 Tutorials](https://docs.nav2.org/tutorials/index.html)
-- [Nav2 GPS Waypoint Following](https://docs.nav2.org/tutorials/docs/navigation2_with_gps.html)
-
----
-
-## 📄 License
-
-Course materials in this repository are for educational use.  
-Please follow the licenses of all third-party software, documents, and referenced resources.
+<p align="center">
+  Built with curiosity, logs, maps, bags, failed tests, and a lot of patience. <br>
+  <b>Control System Lab @ UNNC</b> · <a href="https://control-system-lab-at-unnc.github.io/homepage-v2/">Homepage</a>
+</p>
